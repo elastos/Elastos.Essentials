@@ -1,0 +1,6 @@
+[submodule "ToolChains"]
+	path = ToolChains
+	url = ../Elastos.Essentials.ToolChains.git
+[submodule "App"]
+	path = App
+	url = ../Elastos.Essentials.App.git
