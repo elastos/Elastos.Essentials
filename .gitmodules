@@ -13,3 +13,6 @@
 [submodule "ToolChains"]
 	path = ToolChains
 	url = ../Elastos.Essentials.ToolChains.git
+[submodule "Plugins/AppManager"]
+	path = Plugins/AppManager
+	url = ../Elastos.Essentials.Plugins.AppManager
