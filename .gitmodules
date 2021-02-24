@@ -1,6 +1,15 @@
-[submodule "ToolChains"]
-	path = ToolChains
-	url = ../Elastos.Essentials.ToolChains.git
 [submodule "App"]
 	path = App
 	url = ../Elastos.Essentials.App.git
+[submodule "Plugins/Carrier"]
+	path = Plugins/Carrier
+	url = ../Elastos.NET.Carrier.Cordova.SDK.git
+[submodule "Plugins/DID"]
+	path = Plugins/DID
+	url = ../Elastos.DID.Cordova.SDK.git
+[submodule "Plugins/Hive"]
+	path = Plugins/Hive
+	url = ../Elastos.NET.Hive.Cordova.SDK.git
+[submodule "ToolChains"]
+	path = ToolChains
+	url = ../Elastos.Essentials.ToolChains.git
