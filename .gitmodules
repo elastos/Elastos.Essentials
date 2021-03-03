@@ -19,6 +19,9 @@
 [submodule "Plugins/PasswordManager"]
 	path = Plugins/PasswordManager
 	url = ../Elastos.Essentials.Plugins.PasswordManager.git
+[submodule "Plugins/Wallet"]
+	path = Plugins/Wallet
+	url = ../Elastos.Essentials.Plugins.Wallet.git
 [submodule "ToolChains"]
 	path = ToolChains
 	url = ../Elastos.Essentials.ToolChains.git
