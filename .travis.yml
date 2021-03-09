@@ -47,7 +47,7 @@ before_install:
 
 install:
   - nvm install ${NODEJS_VERSION}
-  - npm install -g cordova @ionic/cli
+  - npm install -g cordova @ionic/cli typescript
   - if [[ "$TRAVIS_EVENT_TYPE" == "cron" && "$TRAVIS_BRANCH" == "master" && "$DEPLOY" != "" ]]; then
       .ci_scripts/checkCommit.sh;
       ret=$?;

@@ -1,8 +1,8 @@
 # Elastos Essentials [TODO:: need to modify]
 
-|Travis|Android(Windows)|Build Runtime(actions)|Build Apps(actions)|
-|:-:|:-:|:-:|:-:|
-|[![Build Status](https://travis-ci.com/elastos/Elastos.Essentials.svg)](https://travis-ci.com/elastos/Elastos.Essentials)|[![Build status](https://ci.appveyor.com/api/projects/status/hjyv761on883jors?svg=true)](https://ci.appveyor.com/project/Elastos/elastos-Essentials)|[![Build Status](https://github.com/elastos/Elastos.Essentials/workflows/Build%20Runtime/badge.svg)](https://github.com/elastos/Elastos.Essentials/actions)|[![Build Status](https://github.com/elastos/Elastos.Essentials/workflows/Build%20App/badge.svg)](https://github.com/elastos/Elastos.Essentials/actions)|
+|Travis|Actions|
+|:-:|:-:|
+|[![Build Status](https://travis-ci.com/elastos/Elastos.Essentials.svg)](https://travis-ci.com/elastos/Elastos.Essentials)|[![Build App](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml/badge.svg)](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml)|
 
 ## Introduction
 
