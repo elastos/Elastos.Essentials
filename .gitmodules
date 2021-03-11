@@ -1,9 +1,6 @@
 [submodule "App"]
 	path = App
 	url = ../Elastos.Essentials.App.git
-[submodule "Plugins/AppManager"]
-	path = Plugins/AppManager
-	url = ../Elastos.Essentials.Plugins.AppManager
 [submodule "Plugins/Carrier"]
 	path = Plugins/Carrier
 	url = ../Elastos.NET.Carrier.Cordova.SDK.git
@@ -25,3 +22,12 @@
 [submodule "ToolChains"]
 	path = ToolChains
 	url = ../Elastos.Essentials.ToolChains.git
+[submodule "Plugins/EssentialsIntent"]
+	path = Plugins/EssentialsIntent
+	url = ../Elastos.Essentials.Plugins.Intent.git
+[submodule "Plugins/CordovaIntent"]
+	path = Plugins/CordovaIntent
+	url = ../Elastos.Cordova.Plugins.Intent.git
+[submodule "Tests"]
+	path = Tests
+	url = ../Elastos.Essentials.Connectivity.Tests.git
