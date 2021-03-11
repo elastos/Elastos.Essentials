@@ -10,6 +10,13 @@
             "request": "launch",
             "type": "node-terminal",
             "cwd": "${workspaceFolder}/App"
+        },
+        {
+            "command": "ionic build",
+            "name": "Ionic build (no prod)",
+            "request": "launch",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/App"
         }
     ]
 }
