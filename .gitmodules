@@ -4,9 +4,15 @@
 [submodule "Plugins/Carrier"]
 	path = Plugins/Carrier
 	url = ../Elastos.NET.Carrier.Cordova.SDK.git
+[submodule "Plugins/CordovaIntent"]
+	path = Plugins/CordovaIntent
+	url = ../Elastos.Cordova.Plugins.Intent.git
 [submodule "Plugins/DID"]
 	path = Plugins/DID
 	url = ../Elastos.DID.Cordova.SDK.git
+[submodule "Plugins/EssentialsIntent"]
+	path = Plugins/EssentialsIntent
+	url = ../Elastos.Essentials.Plugins.Intent.git
 [submodule "Plugins/Fingerprint"]
 	path = Plugins/Fingerprint
 	url = ../Elastos.Essentials.Plugins.Fingerprint.git
@@ -19,21 +25,15 @@
 [submodule "Plugins/Wallet"]
 	path = Plugins/Wallet
 	url = ../Elastos.Essentials.Plugins.Wallet.git
-[submodule "ToolChains"]
-	path = ToolChains
-	url = ../Elastos.Essentials.ToolChains.git
-[submodule "Plugins/EssentialsIntent"]
-	path = Plugins/EssentialsIntent
-	url = ../Elastos.Essentials.Plugins.Intent.git
-[submodule "Plugins/CordovaIntent"]
-	path = Plugins/CordovaIntent
-	url = ../Elastos.Cordova.Plugins.Intent.git
-[submodule "Tests"]
-	path = Tests
-	url = ../Elastos.Essentials.Connectivity.Tests.git
 [submodule "SDK/Connectivity/Cordova"]
 	path = SDK/Connectivity/Cordova
 	url = ../Elastos.Connectivity.Client.Cordova.SDK.git
 [submodule "SDK/Connector/Cordova"]
 	path = SDK/Connector/Cordova
 	url = ../Elastos.Essentials.Connector.Client.Cordova.git
+[submodule "ToolChains"]
+	path = ToolChains
+	url = ../Elastos.Essentials.ToolChains.git
+[submodule "Tests"]
+	path = Tests
+	url = ../Elastos.Essentials.Connectivity.Tests.git
