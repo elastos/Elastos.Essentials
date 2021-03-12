@@ -31,3 +31,9 @@
 [submodule "Tests"]
 	path = Tests
 	url = ../Elastos.Essentials.Connectivity.Tests.git
+[submodule "SDK/Connectivity/Cordova"]
+	path = SDK/Connectivity/Cordova
+	url = ../Elastos.Connectivity.Client.Cordova.SDK.git
+[submodule "SDK/Connector/Cordova"]
+	path = SDK/Connector/Cordova
+	url = ../Elastos.Essentials.Connector.Client.Cordova.git
