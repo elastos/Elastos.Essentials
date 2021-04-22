@@ -5,7 +5,7 @@ matrix:
   include:
     - language: android
       dist: trusty
-      env: NODEJS_VERSION=13 NDK=r18b BUILD_TARGET=all BUILD_PLATFORM=android DEPLOY=TRUE CACHE_NAME=android
+      env: NODEJS_VERSION=13 NDK=r18b BUILD_PLATFORM=android CACHE_NAME=android
       if: NOT tag IS present OR tag !~ /^(daily)/
       android:
         components:
@@ -39,51 +39,59 @@ before_install:
       echo y | sudo sdkmanager "build-tools;28.0.3";
     else
       echo y | sdkmanager "ndk-bundle";
-      echo y | sdkmanager "cmake;3.6.4111459";
-      echo y | sdkmanager --channel=3 --channel=1 "cmake;3.10.2.4988404";
-      echo y | sdkmanager "lldb;3.1";
       export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle;
-    fi
-
-install:
-  - nvm install ${NODEJS_VERSION}
-  - npm install -g cordova @ionic/cli typescript
-  - if [[ "$TRAVIS_EVENT_TYPE" == "cron" && "$TRAVIS_BRANCH" == "master" && "$DEPLOY" != "" ]]; then
+    fi;
+  - if [[ $TRAVIS_BRANCH == "release2github" ]]; then
+      BUILD_TYPE=release;
+      DEPLOY=true;
+    else
+      BUILD_TYPE=debug;
+      if [[ $TRAVIS_BRANCH == "release2github-debug" ]]; then
+        DEPLOY=true;
+      else
+        DEPLOY="";
+      fi;
+    fi;
+  - if [[ "$TRAVIS_EVENT_TYPE" == "cron" ]]; then
       .ci_scripts/checkCommit.sh;
       ret=$?;
       if [[ "$ret" -ne 1 ]]; then
         echo "no commit, do not upload apk!";
         DEPLOY="";
+      else
+        DEPLOY=true;
       fi;
-      BUILD_TARGET=all;
-      openssl aes-256-cbc -K $encrypted_77a9a519d93d_key -iv $encrypted_77a9a519d93d_iv -in trinity-secret.tar.enc -out trinity-secret.tar -d;
+    fi
+
+install:
+  - nvm install ${NODEJS_VERSION}
+  - npm install -g cordova @ionic/cli typescript
+
+script:
+  - export
+  - if [[ "$DEPLOY" != "" ]]; then
+      openssl aes-256-cbc -K $encrypted_07911571674d_key -iv $encrypted_07911571674d_iv -in trinity-secret.tar.enc -out trinity-secret.tar -d;
       tar xvf trinity-secret.tar;
-      mv google-services.json Runtime;
-      mv GoogleService-Info.plist Runtime;
+      mv google-services.json App;
+      mv GoogleService-Info.plist App;
       export COMMITID=$(git log --format=%h -1);
       export APPSUFFIX=$(date +'%Y%m%d%H')-$COMMITID;
       export TRAVIS_TAG="daily"-$APPSUFFIX;
       export APPNAME=Essentials-${APPSUFFIX}.apk;
-    else
-      DEPLOY="";
+      if [[  $BUILD_TYPE != "release" ]]; then
+        sed -i "s/versionName \"[0-9.]*/&.${COMMITID}/" $TRAVIS_BUILD_DIR/App/scripts/patches/after_platform_add_android/build_gradle.patch;
+      fi;
     fi
-
-script:
-  - if [[ "$DEPLOY" != "" ]]; then
-      sed -i "s/versionName \"[0-9.]*/&.${COMMITID}/" $TRAVIS_BUILD_DIR/App/scripts/patches/after_platform_add_android/build_gradle.patch;
-    fi
-  - export APK_PATH=$TRAVIS_BUILD_DIR/App/platforms/android/app/build/outputs/apk/debug
-  - $TRAVIS_BUILD_DIR/ToolChains/bin/build $BUILD_TARGET -pf $BUILD_PLATFORM --build
+  - export APK_PATH=$TRAVIS_BUILD_DIR/App/platforms/android/app/build/outputs/apk/$BUILD_TYPE
+  - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build
   - ls -l $APK_PATH
 
 after_success:
   - if [[ "$DEPLOY" != "" ]]; then
-      if [[ "$UNSIGNED" == "" ]]; then
-        cd $TRAVIS_BUILD_DIR/Runtime;
-        cordova build android --debug -- --keystore="../trinity.jks" --storePassword=$storepass --password=$storepass --alias=trinity;
-      fi;
+      cd $TRAVIS_BUILD_DIR/App;
+      cordova build android --$BUILD_TYPE -- --keystore="../trinity.jks" --storePassword=$storepass --password=$storepass --alias=trinity;
       cd $APK_PATH;
-      cp app-debug.apk $APPNAME;
+      cp app-${BUILD_TYPE}.apk $APPNAME;
       ls -l;
     fi
 
@@ -119,8 +127,8 @@ deploy:
   prerelease: true
   on:
     condition: $DEPLOY != ""
+    all_branches: true
 
 env:
   global:
-  - secure: oUI7RH8tkBaAdhSYAjkksdTpwzlT9nYEwDmX4AP7GZXmGZgg5OjN72QNiYGuIN/ffh9Um2ih8Yxg1Gg/tVgPtFUZxmAwgtZ/UMxrAe+coRZ+oAFAhoIqxiqJN2NwM5CPnOOJEZ8N95JEKlWOq3oSpZ3NRjWS6d5TLpWwvpSvvuqtLvrx0vJxnJkL+D2MvPwzeK4sUqxiDslMEKXGvz02K5P5Ws8HsmkL9pG2IVgAHo4pa2kLbKkrB5jFIWS9l65g0dzSjYpmz1ww1NX/rx26cqSwyO9hA209ya+AKXWNpT6m/0ijI0teHG0wWm+UGzjdX40s8Db6Xq7dxCurnXHFQSJ/fXpZfd6ALBnjLJbD+Y99bzw+nH7iKeGiD7d9J9n6hREzjGVw6Ak+AmbRCXcVJcw+22q+P9gcH+MCfgp7kSA3QHMI6kFBdgIeO9sulbpVS557MHPMVLO2fJq+PI7gsNS/2wwPT3GRrynGdZmrEBHSO+iIu/KXPIJGUqmHJ/RM2t6734KPN1aHr5BDwhaSkWrp/7kNKOOoHczf69uiffchAVZb/m+koLSEXm7sNrlojzYt/86/B60inqxKLFl5e1olL4C5EXTY41oFgvLn1tF144fG8npKdQ1Jy5SAwg7fxPc6ox5b4rqHOJ1FrIb9IbCG3jVRiDK6OtcTi+/o9gE=
-  - secure: Xwot1HaiAnczLJ7NJ+CIO4ehIiT1/x+dY0OY//fzbh14S/nCNrzYqdXRGpRkaU/IiBGbmeRhoCEnEdPKMs/5hgC0qDVd6OhPxEGXYnbLBPS8gF5GZLEZbafVJ0jR1iJ3oV25Y897IGuqL3y8mlwKt0RRHLa+qWSGUjou/3983XO6c6Wwgue6imVFM6YAEJTy2K9JQKT+lIgsjFtSCjGLiHHt3JUqkm8v9ua7QCjXhf2vuG4TrpYDG2h8h+ezwrky00BuSPtUlZTBcZO6m9BVMvYwUC2PenMIQZXyXBGb0451TBYDdeK9a12u4sG10TmlIGvN17zLfdby7q1xOxuKWgh3/C+2uX1gr021M8KU63C93Adp48rCm8rvyr/Edkm5atVlAP7VVOaWeoX/UpDy8jfrejsQr6aw8k2rt6D7P1UWz15m3rbaiVTjbLd/AwCvmdFBw56J03zkbCMvdQUkSFSEcd0b0fihXgChHRQ3RLg0FwYuK9L9RaDckc4ASvZpzILvJg15s6D4S4RPEg5vqT+DAC2cL/nft04m4bEDEFpPJBVmVCgRZs2nF6llgQ4FnqSoaQE/1vek3pZSBCAvbCuVIo9rS1iKkq3gQ0aq2HD5ILLXkNULsbVBkZQaWz1DWabzZ1sffbiimZwx7To2D3hQrZt6rMl9MsZQIL5jCgQ=
+  - secure: iirP58whyuJHukzqSzNNTpRco8r6qRR8M/ZtRD8PB49ZuU+4c+x1TFIQJ0KzGo6C9QaXc+vWkQv2NtDM7Lz9chKPWDQE1R/msjvQ/qfeFwkzzMAeGhejimnTRFyikJa9u+qX9F0O18/GGPFWmxRVamC+7zM/9xmX67iOzrUHj82lHw7P5Uyc9DZvI1XNUOpd0KanGRE7THA79z0I5XmNNpgCJcd+s7bqQeHUGMMwYGNGOSo2ibo4/Av4UUR1Jnr5kFvQ9om4G/AgPNLik9x9fhGAHjjUTrI7YAU8feXRMySXxdXD8eoLUkKm0/4DbQYTypWuqgD4JehwMrSriRBUwvKnObX1Q2SP/87xGvUFlxgjTj8EoCQVI8YazTEIgSoN6LA92SdSYQlej4ZQh9OKj59Xvpxky1A5HBJyU++qlPUFjYa7pBOLeV4Aq2jbdP+0UCRA6AEuFHSVu/Wl7oZmg43yN1AeeY8t9jwKODe1guFVARdCARKOR1vMfFHqXw5nD06OUPrXgySZTfFLVm8UUqS/NCLvGMMVS984lH/MQqyxNrjgwaDbrzMt1V9947YFmnDc1q2C8zNHWHwYwr1WFJsbSk72WTaYoZTQXWnhOsaDc10pIYeFTmiQknvyMCztzgAVgn8k9gJD/LZYyLH6+2v7Rdavh2Kg/EN41kem6BQ=
