@@ -107,10 +107,10 @@ cache:
   - $HOME/.gradle/wrapper/
   - $HOME/.cocoapods/
 
-# notifications:
-#   email:
-#   - raozhiming@trinity-tech.io
-#   - benjaminpiette@elastos-fusion.org
+notifications:
+  email:
+  - raozhiming@trinity-tech.io
+  - benjaminpiette@elastos-fusion.org
 
 before_deploy:
   # Set up git user name and tag this commit
