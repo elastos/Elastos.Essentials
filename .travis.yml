@@ -44,8 +44,10 @@ before_install:
   - if [[ $TRAVIS_BRANCH == "release2github" ]]; then
       BUILD_TYPE=release;
       DEPLOY=true;
+      BUILD_TYPE_ARG="--release";
     else
       BUILD_TYPE=debug;
+      BUILD_TYPE_ARG="";
       if [[ $TRAVIS_BRANCH == "release2github-debug" ]]; then
         DEPLOY=true;
       else
@@ -83,7 +85,7 @@ script:
       fi;
     fi
   - export APK_PATH=$TRAVIS_BUILD_DIR/App/platforms/android/app/build/outputs/apk/$BUILD_TYPE
-  - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build
+  - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build $BUILD_TYPE_ARG
   - ls -l $APK_PATH
 
 after_success:
