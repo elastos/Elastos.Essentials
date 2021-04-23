@@ -72,8 +72,8 @@ install:
 script:
   - export
   - if [[ "$DEPLOY" != "" ]]; then
-      openssl aes-256-cbc -K $encrypted_07911571674d_key -iv $encrypted_07911571674d_iv -in trinity-secret.tar.enc -out trinity-secret.tar -d;
-      tar xvf trinity-secret.tar;
+      openssl aes-256-cbc -K $encrypted_263c44d49544_key -iv $encrypted_263c44d49544_iv -in essentials-secret.tar.enc -out essentials-secret.tar -d;
+      tar xvf essentials-secret.tar;
       mv google-services.json App;
       mv GoogleService-Info.plist App;
       export COMMITID=$(git log --format=%h -1);
@@ -91,7 +91,7 @@ script:
 after_success:
   - if [[ "$DEPLOY" != "" ]]; then
       cd $TRAVIS_BUILD_DIR/App;
-      cordova build android --$BUILD_TYPE -- --keystore="../trinity.jks" --storePassword=$storepass --password=$storepass --alias=trinity;
+      cordova build android --$BUILD_TYPE -- --keystore="../Elastos-Essentials-release.jks" --storePassword=$storepass --password=$storepass --alias=key0;
       cd $APK_PATH;
       cp app-${BUILD_TYPE}.apk $APPNAME;
       ls -l;
