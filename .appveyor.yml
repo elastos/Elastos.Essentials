@@ -20,6 +20,6 @@ build_script:
   - ps: (new-object net.webclient).DownloadFile('https://services.gradle.org/distributions/gradle-6.5.1-bin.zip', 'C:\projects\gradle-6.5.1-bin.zip')
   - cmd: unzip -q C:\projects\gradle-6.5.1-bin.zip -d  C:\projects\
   - cmd: set Path=C:\projects\gradle-6.5.1\bin;%Path%
-  - cmd: npm install -g cordova ionic
+  - cmd: npm install -g cordova ionic typescript
   - cmd: python ToolChains/bin/build all -pf android --build
   - cmd: ls -l App/platforms/android/app/build/outputs/apk/debug/
