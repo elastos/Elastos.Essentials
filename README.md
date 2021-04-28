@@ -1,8 +1,10 @@
 # Elastos Essentials [TODO:: need to modify]
 
-|Travis|Actions|
-|:-:|:-:|
-|[![Build Status](https://travis-ci.com/elastos/Elastos.Essentials.svg)](https://travis-ci.com/elastos/Elastos.Essentials)|[![Build App](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml/badge.svg)](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml)|
+|Travis|Actions|Appveyor|
+|:-:|:-:|:-:|
+|[![Build Status](https://travis-ci.com/elastos/Elastos.Essentials.svg)](https://travis-ci.com/elastos/Elastos.Essentials)|[![Build App](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml/badge.svg)](https://github.com/elastos/Elastos.Essentials/actions/workflows/app.yml)|[![Build status](https://ci.appveyor.com/api/projects/status/ssmobivqcfvbtqa1/branch/master?svg=true)](https://ci.appveyor.com/project/Elastos/elastos-essentials/branch/master)|
+
+
 
 ## Introduction
 
