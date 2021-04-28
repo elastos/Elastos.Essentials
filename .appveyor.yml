@@ -1,0 +1,25 @@
+image: Visual Studio 2017
+
+environment:
+  ANDROID_SDK_ROOT: "C:\\ProgramData\\Microsoft\\AndroidSDK\\25"
+  nodejs_version: "10"
+  PYTHON: "C:\\Python37"
+
+install:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - ps: Install-Product node $env:nodejs_version x64
+  - echo y| "%ANDROID_SDK_ROOT%\tools\android.bat" update sdk -u -a -t tools
+  - echo y| "%ANDROID_SDK_ROOT%\tools\android.bat" update sdk -u -a -t platform-tools
+  - echo y| "%ANDROID_SDK_ROOT%\tools\android.bat" update sdk -u -a -t build-tools-27.0.0
+  - echo y| "%ANDROID_SDK_ROOT%\tools\android.bat" update sdk -u -a -t build-tools-28.0.3
+  - echo y| "%ANDROID_SDK_ROOT%\tools\android.bat" update sdk -u -a -t android-27
+  - echo y| "%ANDROID_SDK_ROOT%\tools\bin\sdkmanager.bat" "ndk-bundle"
+  - git submodule update --init --recursive
+
+build_script:
+  - ps: (new-object net.webclient).DownloadFile('https://services.gradle.org/distributions/gradle-6.5.1-bin.zip', 'C:\projects\gradle-6.5.1-bin.zip')
+  - cmd: unzip -q C:\projects\gradle-6.5.1-bin.zip -d  C:\projects\
+  - cmd: set Path=C:\projects\gradle-6.5.1\bin;%Path%
+  - cmd: npm install -g cordova ionic
+  - cmd: python ToolChains/bin/build all -pf android --build
+  - cmd: ls -l App/platforms/android/app/build/outputs/apk/debug/
