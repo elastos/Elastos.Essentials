@@ -8,33 +8,33 @@
 
 ## Introduction
 
-Elastos Essentials is the project name for the multi-platforms elastOS browser applications. It integrates all the services that Elastos provides and combines them into a singular environment for DApp developers to easily build dApps, and for end user to easily use those dApps.
+Elastos Essentials is the project name for the multi-platforms elastOS browser applications. It integrates all the services that Elastos provides and combines them into a singular environment for dApp developers to easily build dApps, and for end-user to easily use those dApps.
 
-DApp developers only need to write their application using the ionic javascript framework and have only one set of Runtime APIs to manage, and their project can run on all major platforms.
+dApp developers only need to write their application using the ionic javascript framework and have only one set of Runtime APIs to manage, and their project can run on all major platforms.
 
-Elastos Essentials is supported on Android, iOS and soon MacOS, Windows and Linux.
+Elastos Essentials is supported on Android, iOS, and soon macOS, Windows, and Linux.
 
 [Join us on Telegram](https://t.me/elastosbrowser)
 
-## Dapp Developers - should you build this repo?
+## dApp Developers - should you build this repo?
 
-You don't need to build from source. Instead get the latest APK from app stores or github releases and follow the [Elastos Developer Website Essentials guides](https://developer.elastos.org/build/elastos/).
+You don't need to build from the source. Instead, get the latest APK from app stores or GitHub releases and follow the [Elastos Developer Website Essentials guides](https://developer.elastos.org/build/elastos/).
 
 ## Download Essentials for Android
 [stable version](https://github.com/elastos/Elastos.Essentials/releases/latest)
 
-[latest version(tag starting with daily)](https://github.com/elastos/Elastos.Essentials/releases)
+[the latest version(tag starting with daily)](https://github.com/elastos/Elastos.Essentials/releases)
 
 
 ## Build from Source
 
 ### Prerequisites
 
-git, node, npm, python, cordova, ionic
+Git, Node.js, npm, Python, Cordova, ionic
 
 #### Github
 
-- Upload your SSH public key to your github profile if not already done - https://github.com/settings/keys
+- Upload your SSH public key to your GitHub profile if not already done - https://github.com/settings/keys
 
 #### For Android:
 - Java JDK 1.8 or greater
@@ -83,7 +83,7 @@ Check **build script options** below.
 
 - build clean: deletes runtime platforms.
 
-    if you update plugins, you should call build clean, then build runtime. Otherwise, latest plugins changes are not applied inside the native app.
+    If you update plugins, you should call build clean, then build runtime. Otherwise, the latest plugin changes are not applied inside the native app.
 
 - build clobber: deletes all generated or downloaded files (everything).
 
@@ -162,7 +162,7 @@ The Elastos.Essentials repository contains many git-submodules, as shown in this
 
 ## Contribution
 
-We welcome contributions to the Elastos Essentials Project. Please reach us on telegram if you would like to jump in the code but you don't know how to start, or if you want to know who is currently workin on what.
+We welcome contributions to the Elastos Essentials Project. Please reach us on Telegram if you would like to jump in the code, but you don't know how to start, or if you want to know who is currently working on what.
 
 ## Roadmap
 
