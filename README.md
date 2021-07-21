@@ -8,35 +8,33 @@
 
 ## Introduction
 
-Elastos Essentials is the project name for the multi-platforms elastOS browser applications. It integrates all the services that Elastos provides and combines them into a singular environment for dApp developers to easily build dApps, and for end-user to easily use those dApps.
+Elastos Essentials is multi-purpose wallet application of the Elastos ecosystem. It integrates all the services that Elastos provides such as decentralized identities (DID), storage (Hive), chains (Wallet) and combines them into a singular environment for end-users to easily use Elastos features in third party dApps.
 
-dApp developers only need to write their application using the ionic javascript framework and have only one set of Runtime APIs to manage, and their project can run on all major platforms.
-
-Elastos Essentials is supported on Android, iOS, and soon macOS, Windows, and Linux.
+Elastos Essentials is distributed on Android and iOS.
 
 [Join us on Telegram](https://t.me/elastosbrowser)
 
 ## dApp Developers - should you build this repo?
 
-You don't need to build from the source. Instead, get the latest APK from app stores or GitHub releases and follow the [Elastos Developer Website Essentials guides](https://developer.elastos.org/build/elastos/).
+You don't need to build from the source. Instead, get the latest Essentials from app stores or Android daily builds from GitHub releases.
 
 ## Download Essentials for Android
 [stable version](https://github.com/elastos/Elastos.Essentials/releases/latest)
 
 [the latest version(tag starting with daily)](https://github.com/elastos/Elastos.Essentials/releases)
 
-
 ## Build from Source
 
 ### Prerequisites
 
-Git, Node.js, npm, Python, Cordova, ionic
+Latest versions of : Git, Node.js, npm, Python, Cordova, ionic
 
 #### Github
 
 - Upload your SSH public key to your GitHub profile if not already done - https://github.com/settings/keys
 
 #### For Android:
+
 - Java JDK 1.8 or greater
 - Android SDK
 - Android NDK (android-ndk-r16b or higher)
@@ -54,7 +52,7 @@ Git, Node.js, npm, Python, Cordova, ionic
  On Windows, set the environment variable in the control panel.
 
 #### For iOS:
-- Xcode 10 or higher
+- Xcode 12
 
 ### Get the Code
 
@@ -71,8 +69,15 @@ Hold on, this will take a while.
 **For a fresh start or restart:**
 
 ```shell
+./synccode.sh
 ./ToolChains/bin/build clobber
 ./ToolChains/bin/build all
+```
+
+This will build the android platform only. To build ios:
+
+```
+./ToolChains/bin/build all -pf ios
 ```
 
 **Depending on what you are working on (runtime, plugins, dapps...)**:
@@ -130,43 +135,9 @@ Then build what you need to work on. Choose among:
 ./ToolChains/bin/build dapp ...
 ```
 
-## Convert an elastOS capsule to a standalone native app
-### Build on Linux(can only build for android)
-```
-cd ToolChains/native/bin && ./build -p /path/to/elastOS-capsule/directory
-```
-
-### Build on Mac(can build for both android and iOS)
-```
-TODO:
-```
-
-## Architecture - Repositories
-
-The Elastos.Essentials repository contains many git-submodules, as shown in this overview:
-
-* [Elastos.Essentials.Runtime](https://github.com/elastos/Elastos.Essentials.Runtime)
-* [Elastos.Essentials.ToolChains](https://github.com/elastos/Elastos.Essentials.ToolChains)
-* Elastos.Essentials.Plugins
-  * [Elastos.Essentials.Runtime.Plugins.AppManager](https://github.com/elastos/Elastos.Essentials.Runtime.Plugins.AppManager)
-  * [Elastos.Essentials.Plugins.Carrier](https://github.com/elastos/Elastos.Essentials.Plugins.Carrier)
-  * [Elastos.Essentials.Plugins.File](https://github.com/elastos/Elastos.Essentials.Plugins.File)
-  * [Elastos.Essentials.Plugins.Hive](https://github.com/elastos/Elastos.Essentials.Plugins.Hive)
-  * [Elastos.Essentials.Plugins.Media](https://github.com/elastos/Elastos.Essentials.Plugins.Media)
-  * [Elastos.Essentials.Plugins.QRScanner](https://github.com/elastos/Elastos.Essentials.Plugins.QRScanner)
-  * [Elastos.Essentials.Plugins.Wallet](https://github.com/elastos/Elastos.Essentials.Plugins.Wallet)
-* Elastos.Essentials.DApps
-  * [Elastos.Essentials.DApps.Launcher](https://github.com/elastos/Elastos.Essentials.DApps.Launcher)
-  * [Elastos.Essentials.DApps.Wallet](https://github.com/elastos/Elastos.Essentials.DApps.Wallet)
-  * Elastos.Essentials.DApps.IM (Todo)
-
 ## Contribution
 
 We welcome contributions to the Elastos Essentials Project. Please reach us on Telegram if you would like to jump in the code, but you don't know how to start, or if you want to know who is currently working on what.
-
-## Roadmap
-
-[Elastos Essentials Roadmap](https://developer.elastos.org/faq_roadmap/modules_status/)
 
 ## Acknowledgments
 
