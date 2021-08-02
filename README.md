@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Elastos Essentials is multi-purpose wallet application of the Elastos ecosystem. It integrates all the services that Elastos provides such as decentralized identities (DID), storage (Hive), chains (Wallet) and combines them into a singular environment for end-users to easily use Elastos features in third party dApps.
+Elastos Essentials is a multi-purpose wallet application of the Elastos ecosystem. It integrates all the services that Elastos provides such as decentralized identities (DID), storage (Hive), chains (Wallet) and combines them into a singular environment for end-users to easily use Elastos features in third party dApps.
 
 Elastos Essentials is distributed on Android and iOS.
 
@@ -27,7 +27,7 @@ You don't need to build from the source. Instead, get the latest Essentials from
 
 ### Prerequisites
 
-Latest versions of : Git, Node.js, npm, Python, Cordova, ionic
+Latest versions of: Git, Node.js, npm, Python, Cordova, Ionic
 
 #### Github
 
