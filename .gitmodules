@@ -19,9 +19,13 @@
 [submodule "SDK/Connector/Cordova"]
 	path = SDK/Connector/Cordova
 	url = ../Elastos.Essentials.Connector.Client.Cordova.git
+[submodule "SDK/Web3Provider"]
+	path = SDK/Web3Provider
+	url = ../Elastos.Essentials.InAppBrowserWeb3Provider.git
 [submodule "ToolChains"]
 	path = ToolChains
 	url = ../Elastos.Essentials.ToolChains.git
 [submodule "Tests"]
 	path = Tests
 	url = ../Elastos.Essentials.Connectivity.Tests.git
+
