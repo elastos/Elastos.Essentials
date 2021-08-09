@@ -22,6 +22,9 @@
 [submodule "SDK/Web3Provider"]
 	path = SDK/Web3Provider
 	url = ../Elastos.Essentials.InAppBrowserWeb3Provider.git
+[submodule "SDK/InternalConnector"]
+	path = SDK/InternalConnector
+	url = ../Elastos.Essentials.InAppBrowserConnector.git
 [submodule "ToolChains"]
 	path = ToolChains
 	url = ../Elastos.Essentials.ToolChains.git
