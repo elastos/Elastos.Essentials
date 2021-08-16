@@ -72,10 +72,7 @@ install:
 script:
   - export
   - if [[ "$DEPLOY" != "" ]]; then
-      openssl aes-256-cbc -K $encrypted_263c44d49544_key -iv $encrypted_263c44d49544_iv -in essentials-secret.tar.enc -out essentials-secret.tar -d;
-      tar xvf essentials-secret.tar;
-      mv google-services.json App;
-      mv GoogleService-Info.plist App;
+      openssl aes-256-cbc -K $encrypted_7cc824b4064e_key -iv $encrypted_7cc824b4064e_iv -in Elastos-Essentials-release.jks.enc -out Elastos-Essentials-release.jks -d;
       export COMMITID=$(git log --format=%h -1);
       export APPSUFFIX=$(date +'%Y%m%d%H')-$COMMITID;
       export TRAVIS_TAG="daily"-$APPSUFFIX;
