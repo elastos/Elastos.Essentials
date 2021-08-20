@@ -82,7 +82,7 @@ script:
       fi;
     fi
   - export APK_PATH=$TRAVIS_BUILD_DIR/App/platforms/android/app/build/outputs/apk/$BUILD_TYPE
-  - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build $BUILD_TYPE_ARG  --with-firebase y
+  - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build $BUILD_TYPE_ARG
   - ls -l $APK_PATH
 
 after_success:
