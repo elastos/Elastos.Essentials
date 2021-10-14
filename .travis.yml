@@ -70,7 +70,8 @@ install:
   - npm install -g cordova @ionic/cli typescript
 
 script:
-  - export
+  - git branch -vv
+  - git submodule foreach 'git branch -vv'
   - if [[ "$DEPLOY" != "" ]]; then
       openssl aes-256-cbc -K $encrypted_7cc824b4064e_key -iv $encrypted_7cc824b4064e_iv -in Elastos-Essentials-release.jks.enc -out Elastos-Essentials-release.jks -d;
       export COMMITID=$(git log --format=%h -1);
