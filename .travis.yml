@@ -5,7 +5,7 @@ matrix:
   include:
     - language: android
       dist: trusty
-      env: NODEJS_VERSION=13 NDK=r18b BUILD_PLATFORM=android CACHE_NAME=android
+      env: NODEJS_VERSION=14 NDK=r18b BUILD_PLATFORM=android CACHE_NAME=android
       if: NOT tag IS present OR tag !~ /^(daily)/
       android:
         components:
