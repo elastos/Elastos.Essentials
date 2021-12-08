@@ -111,12 +111,12 @@ python ToolChains\bin\build all
 
 **Build and run the Android platform in Android Studio:**
 
-- From Android Studio, import the project from `Elastos.Essentials/Runtime/platforms/android`
+- From Android Studio, import the project from `Elastos.Essentials/App/platforms/android`
 - Run the project
 
 **Using Xcode:**
 
-- Open the xcworkspace from `Elastos.Essentials/Runtime/platforms/ios`
+- Open the xcworkspace from `Elastos.Essentials/App/platforms/ios`
 - Run the project
 
 ### To update the existing folder to the latest source code
