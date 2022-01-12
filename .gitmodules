@@ -1,9 +1,6 @@
 [submodule "App"]
 	path = App
 	url = ../Elastos.Essentials.App.git
-[submodule "Plugins/EssentialsIntent"]
-	path = Plugins/EssentialsIntent
-	url = ../Elastos.Essentials.Plugins.Intent.git
 [submodule "Plugins/Fingerprint"]
 	path = Plugins/Fingerprint
 	url = ../Elastos.Essentials.Plugins.Fingerprint.git
@@ -31,4 +28,9 @@
 [submodule "Tests"]
 	path = Tests
 	url = ../Elastos.Essentials.Connectivity.Tests.git
-
+[submodule "Plugins/CordovaIntent"]
+	path = Plugins/CordovaIntent
+	url = ../Elastos.Cordova.Plugins.Intent.git
+[submodule "Plugins/DID"]
+	path = Plugins/DID
+	url = ../Elastos.DID.Cordova.SDK.git
