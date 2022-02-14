@@ -48,7 +48,7 @@ npmUpdate() {
     if [ -d "$node_module" ]; then
         cd "App"
         echo_with_color $OKCYAN "npm update..."
-        npm update
+        npm update --legacy-peer-deps
         cd ..
     else
         echo_with_color $OKBLUE "$node_module is Empty, Not calling npm update."
