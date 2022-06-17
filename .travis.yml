@@ -11,17 +11,17 @@ matrix:
         components:
           - tools
           - platform-tools
-          - build-tools-28.0.3
-          - android-28
+          - build-tools-30.0.3
+          - android-30
         licenses:
           - 'android-sdk-preview-license-.+'
           - 'android-sdk-license-.+'
           - 'google-gdk-license-.+'
 
 before_install:
-  - wget -q https://services.gradle.org/distributions/gradle-5.4.1-bin.zip
-  - sudo unzip -q gradle-5.4.1-bin.zip -d $TRAVIS_HOME/gradle/
-  - export PATH=$TRAVIS_HOME/gradle/gradle-5.4.1/bin:$PATH
+  - wget -q https://services.gradle.org/distributions/gradle-7.1.1-bin.zip
+  - sudo unzip -q gradle-7.1.1-bin.zip -d $TRAVIS_HOME/gradle/
+  - export PATH=$TRAVIS_HOME/gradle/gradle-7.1.1/bin:$PATH
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       brew cask uninstall java;
@@ -39,6 +39,8 @@ before_install:
       echo y | sudo sdkmanager "build-tools;28.0.3";
     else
       echo y | sdkmanager "ndk-bundle";
+      echo y | sdkmanager "platforms;android-30";
+      echo y | sdkmanager "build-tools;30.0.3";
       export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle;
     fi;
   - if [[ $TRAVIS_BRANCH == "release2github" ]]; then
