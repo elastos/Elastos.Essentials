@@ -86,16 +86,18 @@ script:
     fi
   - export APK_PATH=$TRAVIS_BUILD_DIR/App/platforms/android/app/build/outputs/apk/$BUILD_TYPE
   - $TRAVIS_BUILD_DIR/ToolChains/bin/build all -pf $BUILD_PLATFORM --build $BUILD_TYPE_ARG
-  - ls -l $APK_PATH
+  - cd $APK_PATH
+  - cp app-${BUILD_TYPE}.apk $APPNAME
+  - ls -l
 
-after_success:
-  - if [[ "$DEPLOY" != "" ]]; then
-      cd $TRAVIS_BUILD_DIR/App;
-      cordova build android --$BUILD_TYPE -- --keystore="../Elastos-Essentials-release.jks" --storePassword=$storepass --password=$storepass --alias=key0;
-      cd $APK_PATH;
-      cp app-${BUILD_TYPE}.apk $APPNAME;
-      ls -l;
-    fi
+# after_success:
+#   - if [[ "$DEPLOY" != "" ]]; then
+#       cd $TRAVIS_BUILD_DIR/App;
+#       cordova build android --$BUILD_TYPE -- --keystore="../Elastos-Essentials-release.jks" --storePassword=$storepass --password=$storepass --alias=key0;
+#       cd $APK_PATH;
+#       cp app-${BUILD_TYPE}.apk $APPNAME;
+#       ls -l;
+#     fi
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
