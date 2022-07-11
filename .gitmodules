@@ -10,12 +10,6 @@
 [submodule "Plugins/Wallet"]
 	path = Plugins/Wallet
 	url = ../Elastos.Essentials.Plugins.Wallet.git
-[submodule "SDK/Connectivity/Cordova"]
-	path = SDK/Connectivity/Cordova
-	url = ../Elastos.Connectivity.Client.Cordova.SDK.git
-[submodule "SDK/Connector/Cordova"]
-	path = SDK/Connector/Cordova
-	url = ../Elastos.Essentials.Connector.Client.Cordova.git
 [submodule "SDK/Web3Provider"]
 	path = SDK/Web3Provider
 	url = ../Elastos.Essentials.InAppBrowserWeb3Provider.git
