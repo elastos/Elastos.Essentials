@@ -11,38 +11,25 @@ matrix:
         components:
           - tools
           - platform-tools
-          - build-tools-30.0.3
-          - android-30
+          - build-tools-32.0.0
+          - android-32
         licenses:
           - 'android-sdk-preview-license-.+'
           - 'android-sdk-license-.+'
           - 'google-gdk-license-.+'
+      jdk: openjdk11
 
 before_install:
+  - touch $HOME/.android/repositories.cfg
+  - wget "https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip" -O commandlinetools.zip
+  - unzip commandlinetools.zip -d $ANDROID_HOME/
+  - yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager "platforms;android-32" --sdk_root=$ANDROID_HOME
+  - yes | $ANDROID_HOME/cmdline-tools/bin/sdkmanager "build-tools;32.0.0" --sdk_root=$ANDROID_HOME
+
   - wget -q https://services.gradle.org/distributions/gradle-7.1.1-bin.zip
   - sudo unzip -q gradle-7.1.1-bin.zip -d $TRAVIS_HOME/gradle/
   - export PATH=$TRAVIS_HOME/gradle/gradle-7.1.1/bin:$PATH
 
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      brew cask uninstall java;
-      gem install cocoapods;
-      pod setup;
-      pod repo update;
-      wget -q https://dl.google.com/android/repository/sdk-tools-darwin-4333796.zip;
-      sudo unzip -q sdk-tools-darwin-4333796.zip -d $TRAVIS_HOME/android-sdk/;
-      export ANDROID_HOME=$TRAVIS_HOME/android-sdk;
-      sudo chmod -R 777 $ANDROID_HOME;
-      wget -q https://dl.google.com/android/repository/android-ndk-${NDK}-darwin-x86_64.zip;
-      sudo unzip -q android-ndk-${NDK}-darwin-x86_64.zip -d $TRAVIS_HOME/;
-      export ANDROID_NDK_HOME=$TRAVIS_HOME/android-ndk-${NDK};
-      export PATH=$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/build-tools:$PATH;
-      echo y | sudo sdkmanager "build-tools;28.0.3";
-    else
-      echo y | sdkmanager "ndk-bundle";
-      echo y | sdkmanager "platforms;android-30";
-      echo y | sdkmanager "build-tools;30.0.3";
-      export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle;
-    fi;
   - if [[ $TRAVIS_BRANCH == "release2github" ]]; then
       BUILD_TYPE=release;
       DEPLOY=true;
