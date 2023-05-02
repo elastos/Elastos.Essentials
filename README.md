@@ -1,4 +1,4 @@
-# Elastos Essentials [TODO:: need to modify]
+# Essentials Web3 wallet
 
 |Travis|Actions|Appveyor|
 |:-:|:-:|:-:|
