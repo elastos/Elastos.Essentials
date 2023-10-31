@@ -17,6 +17,13 @@
             "request": "launch",
             "type": "node-terminal",
             "cwd": "${workspaceFolder}/App"
+        },
+        {
+            "command": "npm run lint",
+            "name": "Lint",
+            "request": "launch",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/App"
         }
     ]
 }
