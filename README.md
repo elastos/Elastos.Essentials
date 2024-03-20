@@ -21,8 +21,6 @@ You don't need to build from the source. Instead, get the latest Essentials from
 ## Download Essentials for Android
 [stable version](https://github.com/elastos/Elastos.Essentials/releases/latest)
 
-[the latest version(tag starting with daily)](https://github.com/elastos/Elastos.Essentials/releases)
-
 ## Build from Source
 
 ### Prerequisites
@@ -35,9 +33,9 @@ Latest versions of: Git, Node.js, npm, Python, Cordova, Ionic
 
 #### For Android:
 
-- Java JDK 1.8 or greater
+- Java Development Kit (JDK) 11
 - Android SDK
-- Android NDK (android-ndk-r16b or higher)
+- Node.js
 
  The supported way of doing this nowadays is to use Android Studio.
 
